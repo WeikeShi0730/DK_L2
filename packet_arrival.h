@@ -42,6 +42,13 @@ packet_arrival_event(Simulation_Run_Ptr, void*);
 long
 schedule_packet_arrival_event(Simulation_Run_Ptr, double);
 
+void
+slot_event(Simulation_Run_Ptr, void *);
+
+
+long int
+schedule_slot_event(Simulation_Run_Ptr, double);
+
 /******************************************************************************/
 
 #endif /* packet_arrival.h */
