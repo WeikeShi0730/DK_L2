@@ -59,6 +59,8 @@ main(void)
 
   unsigned RANDOM_SEEDS[] = {RANDOM_SEED_LIST, 0};
   double PACKET_ARRIVAL_RATE_LIST[] = {PACKET_ARRIVAL_RATE};
+  int PACKET_LENGTH_LIST[] = {PACKET_LENGTH};
+  int N_BYTE_COUNT_LIST[] = {N_BYTE_COUNT};
   unsigned random_seed;
 
   int size_rand_seed = (sizeof(RANDOM_SEEDS)/sizeof(unsigned)) - 1;
@@ -88,7 +90,7 @@ main(void)
   #endif
 
 
-  for (int i = 0; i < (sizeof(PACKET_ARRIVAL_RATE_LIST)/sizeof(double)); i ++)
+  for (int i = 0; i < (sizeof(N_BYTE_COUNT_LIST)/sizeof(int)); i++)
   {
 
       j = 0;
@@ -118,6 +120,10 @@ main(void)
          */
         
         data.packet_arrival_rate = PACKET_ARRIVAL_RATE_LIST[i];
+        for(int m = 0; m < (sizeof(PACKET_LENGTH_LIST)/sizeof(int)); m++){
+          data.packet_length_list[m] = PACKET_LENGTH_LIST[m];
+        }
+        data.n_byte_count = N_BYTE_COUNT_LIST[i];
         data.blip_counter = 0;
         data.arrival_count = 0;
         data.number_of_packets_processed = 0;

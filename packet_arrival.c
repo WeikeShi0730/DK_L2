@@ -71,7 +71,11 @@ packet_arrival_event(Simulation_Run_Ptr simulation_run, void * ptr)
 
   new_packet = (Packet_Ptr) xmalloc(sizeof(Packet));
   new_packet->arrive_time = simulation_run_get_time(simulation_run);
-  new_packet->service_time = get_packet_transmission_time();
+
+  int index = (int) uniform_generator() * 5;
+  int packet_length = data->packet_length_list[index];
+  double transmission_time = (double) packet_length/LINK_BIT_RATE;
+  new_packet->service_time = transmission_time; 
   new_packet->status = WAITING;
 
   /* 
